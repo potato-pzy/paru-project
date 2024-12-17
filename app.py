@@ -188,16 +188,20 @@ def restrict_routes():
         return redirect(url_for('login'))
 
 
-if __name__ == '__main__':
+
     # Create application context and initialize database
-    with app.app_context():
-        db.create_all()    
+    # Application routes
+app = create_app()
 
-        if not User.query.filter_by(username='admin').first():
-         hashed_password = generate_password_hash('password', method='pbkdf2:sha256')
-         admin_user = User(username='admin', password=hashed_password, role='admin')
-         db.session.add(admin_user)
-         db.session.commit()
+# Ensure database is created
+with app.app_context():
+    db.create_all()
+    if not User.query.filter_by(username='admin').first():
+        hashed_password = generate_password_hash('password', method='pbkdf2:sha256')
+        admin_user = User(username='admin', password=hashed_password, role='admin')
+        db.session.add(admin_user)
+        db.session.commit()
 
+if __name__ == '__main__':
     # Run the application
     app.run(debug=True)
