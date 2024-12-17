@@ -33,7 +33,7 @@ def create_app():
     return appster_blueprint(admin_bp, url_prefix='/admin')
 
 
-db = SQLAlchemy()
+
 
  
 from flask_sqlalchemy import SQLAlchemy
