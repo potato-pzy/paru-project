@@ -2,12 +2,12 @@ from flask import Flask, render_template, redirect, url_for, request, session, f
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps  # Import functools for creating the login-required decorator
-
 from routes.events import events_bp  # Import the events blueprint
 from routes.academic import academic  # Import the academic blueprint
 from routes.notices import notices_bp  # Import the notices blueprint
 from routes.admin import admin_bp
 # Initialize SQLAlchemy globally without binding to an app
+
 db = SQLAlchemy()
 app = Flask(__name__)
 def create_app():
@@ -20,17 +20,14 @@ def create_app():
     db.init_app(app)
 
     # Register blueprints
-    from routes.admin import admin_bp
-    from routes.events import events_bp
-    from routes.notices import notices_bp
-    from routes.academic import academic
+ 
 
-    app.register_blueprint(admin_bp, url_prefix='/admin')
-    app.register_blueprint(events_bp)
-    app.register_blueprint(notices_bp, url_prefix='/notices')
-    app.register_blueprint(academic, url_prefix='/academic')
+    app.register_blueprint(admin_bp, url_prefix='/admin', name='unique_admin')
+ 
+    app.register_blueprint(notices_bp, url_prefix='/notices', name='unique_notices')
+    app.register_blueprint(academic, url_prefix='/academic', name='unique_academic')
 
-    return appster_blueprint(admin_bp, url_prefix='/admin')
+    return app
 
 
 
