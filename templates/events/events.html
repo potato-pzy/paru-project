@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Events - College Alert System{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1 style="font-size: 2rem; margin-bottom: 1rem;">Upcoming Events</h1>
+    
+    <div style="display: grid; gap: 1.5rem;">
+        <div class="card" style="margin: 0;">
+            <h2 style="color: var(--primary-color); font-size: 1.3rem;">Technical Symposium 2024</h2>
+            <p style="color: #666; margin: 0.5rem 0;">Date: March 15th, 2024</p>
+            <p style="margin-bottom: 1rem;">Annual technical symposium featuring workshops, competitions, and guest lectures.</p>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+
+        <div class="card" style="margin: 0;">
+            <h2 style="color: var(--primary-color); font-size: 1.3rem;">Cultural Fest</h2>
+            <p style="color: #666; margin: 0.5rem 0;">Date: April 5th-7th, 2024</p>
+            <p style="margin-bottom: 1rem;">Three days of music, dance, and cultural celebrations.</p>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+
+        <div class="card" style="margin: 0;">
+            <h2 style="color: var(--primary-color); font-size: 1.3rem;">Workshop on Blockchain</h2>
+            <p style="color: #666; margin: 0.5rem 0;">Date: March 20th, 2024</p>
+            <p style="margin-bottom: 1rem;">Learn about blockchain technology and its applications.</p>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
